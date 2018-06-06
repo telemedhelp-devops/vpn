@@ -1,4 +1,6 @@
 ```
+apt-get install -y uml-utilities bridge-utils ifupdown
+
 cat >/etc/network/interaces.d/sshvpn0 <<EOF
 auto tap8
 iface tap8 inet manual
@@ -21,4 +23,8 @@ Host vpn.telemed.help
 	Tunnel=Ethernet
 	TunnelDevice=8:8
 EOF
+
+ifup tap8
+ifup sshvpn0
+trezor-agent -c vpn.telemed.help …
 ```
